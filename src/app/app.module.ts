@@ -8,7 +8,7 @@ import { MapComponent } from './map/map.component';
 import {RouterModule} from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import {appRouting} from './app.routing';
-
+import { AutocompleteModule } from 'ng2-input-autocomplete';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import {appRouting} from './app.routing';
     FormsModule,
     HttpModule,
     RouterModule,
-    appRouting
+    appRouting,
+    AutocompleteModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
