@@ -7,4 +7,6 @@
     color: #a7a7a7;
 }
 
-
+.form-inline .alert.alert-danger {
+    margin-top: 15px;
+}

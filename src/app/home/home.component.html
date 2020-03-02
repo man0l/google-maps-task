@@ -1,16 +1,16 @@
 <div class="col-md-6">
-    <form class="form-inline" role="form">
+    <form class="form-inline" role="form" [formGroup]="form" (ngSubmit)="onSubmit(form)">
       <div class="form-group">
             <input type="text"
                    placeholder="Type in your address"
                    class="form-control form-control-lg "
                    name="address" id="address"
-                   input-autocomplete
-                   [config]="config" [items]="items"
-                   (inputChangedEvent)="search($event)"
-                   (selectEvent)="onSelect($event)"
+                   formControlName="address"
             >
-          <input type="submit" value="Get Coordinates" class="btn btn-lg btn-success">
+          <input type="submit" value="Get Coordinates" class="btn btn-lg btn-success" [disabled]="form.invalid">
       </div>
+        <div class="form-group">
+            <div *ngIf="form.controls.address.hasError('required')" class="alert alert-danger"><span>Please type in an address</span></div>
+        </div>
     </form>
 </div>

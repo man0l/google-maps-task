@@ -1,41 +1,33 @@
-import {Component, EventEmitter, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {MapService} from '../services/map.service';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  styleUrls: ['./home.component.css'],
+  providers: [MapService]
 })
 export class HomeComponent implements OnInit {
-  items: any[] = [{id: 0, payload: {label: 'Sofia'}},
-    {id: 1, payload: {label: 'Plovdiv'}},
-    {id: 2, payload: {label: 'Stara Zagora'}},
-    {id: 3, payload: {label: 'Burgas'}},
-    {id: 4, payload: {label: 'Varna'}},
-    {id: 5, payload: {label: 'Veliko Tarnovo'}},
-    {id: 6, payload: {label: 'Pleven'}}
-  ];
-  config: any = {'class': 'form-control-autocomplete', 'max': 2, 'placeholder': 'address', 'sourceField': ['payload', 'label']};
-  selectedItem: any;
-  inputChanged: any;
-  constructor() { }
+
+  form: FormGroup;
+  constructor(private fb: FormBuilder, private mapService: MapService) {
+    this.form = fb.group({
+      address: ['', Validators.required]
+    });
+  }
 
   ngOnInit() {
   }
 
-  onSelect(item: any) {
-    this.selectedItem = item;
+  onSubmit(form: FormGroup) {
+    console.log(form.value.address);
+
+    this.mapService.getCoordinates(form.value.address).subscribe(([google, openStreet]) => {
+      console.log(google);
+      console.log(openStreet);
+    });
+
   }
-
-  onInputChangedEvent(val: string) {
-    this.inputChanged = val;
-  }
-
-  search (term: {}) {
-    console.log(term);
-    // search and subscribe
-  }
-
-
-
 
 }
