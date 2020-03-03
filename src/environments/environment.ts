@@ -5,10 +5,10 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'https://5e5cd25297d2ea0014796d06.mockapi.io',
+  baseUrl: 'http://127.0.0.1:8000',
   endpoint: {
-    google: '/map',
-    openStreet: '/map-open-street'
+    google: '/maps/google',
+    openStreet: '/maps/openstreet'
   },
 
 };

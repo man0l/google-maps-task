@@ -10,14 +10,14 @@ export class MapService {
   constructor(private http: Http) { }
 
   private getCoordinatesGoogle(address: string) {
-    const url = `${environment.baseUrl}${environment.endpoint.google}?search=${address}`;
+    const url = `${environment.baseUrl}${environment.endpoint.google}/${address}`;
     return this.http.get(url).pipe(map((res: any) => {
       return res.json();
     }));
   }
 
   private getCoordinatesOpenStreet(address: string) {
-    const url = `${environment.baseUrl}${environment.endpoint.openStreet}?search=${address}`;
+    const url = `${environment.baseUrl}${environment.endpoint.openStreet}/${address}`;
     return this.http.get(url).pipe(map((res: any) => {
       return res.json();
     }));
