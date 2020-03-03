@@ -10,7 +10,29 @@
           <input type="submit" value="Get Coordinates" class="btn btn-lg btn-success" [disabled]="form.invalid">
       </div>
         <div class="form-group">
+            <div class="mt-0">Quick examples:
+                <a href="javascript:;" (click)="onClick('Sofia, Bulgaria')">Sofia, Bulgaria</a> |
+                <a href="javascript:;" (click)="onClick('1 Hacker Way, Menlo Park, CA 94205')">1 Hacker Way, Menlo Park, CA 94205</a>
+            </div>
+        </div>
+        <div class="form-group">
             <div *ngIf="form.controls.address.hasError('required')" class="alert alert-danger"><span>Please type in an address</span></div>
         </div>
     </form>
+</div>
+<div class="col-md-6 mt-5">
+    <div *ngIf="googleMapsResult" class="mt-5 float-left">
+        <ul>
+            <li>Address: {{ googleMapsResult?.address  }}</li>
+            <li>Latitude: {{ googleMapsResult?.latitude  }}</li>
+            <li>Longitude: {{ googleMapsResult?.longitude  }}</li>
+        </ul>
+    </div>
+    <div *ngIf="openStreetMapsResult" class="mt-5 float-left">
+        <ul>
+            <li>Address: {{ openStreetMapsResult?.address  }}</li>
+            <li>Latitude: {{ openStreetMapsResult?.latitude  }}</li>
+            <li>Longitude: {{ openStreetMapsResult?.longitude  }}</li>
+        </ul>
+    </div>
 </div>

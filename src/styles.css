@@ -1,6 +1,7 @@
 body {
     width: 1024px;
     margin: 0 auto !important;
+    min-height: 768px;
 }
 
 
@@ -14,8 +15,7 @@ body > header h1 {
 }
 
 footer {
-    position: absolute;
-    bottom: 0;
+
 }
 .form-control-autocomplete input {
     display: block;

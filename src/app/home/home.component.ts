@@ -11,6 +11,8 @@ import {MapService} from '../services/map.service';
 export class HomeComponent implements OnInit {
 
   form: FormGroup;
+  googleMapsResult: any;
+  openStreetMapsResult: any;
   constructor(private fb: FormBuilder, private mapService: MapService) {
     this.form = fb.group({
       address: ['', Validators.required]
@@ -21,13 +23,17 @@ export class HomeComponent implements OnInit {
   }
 
   onSubmit(form: FormGroup) {
-    console.log(form.value.address);
-
     this.mapService.getCoordinates(form.value.address).subscribe(([google, openStreet]) => {
+      this.googleMapsResult = google;
+      this.openStreetMapsResult = openStreet;
       console.log(google);
       console.log(openStreet);
     });
+  }
 
+  onClick(value) {
+    this.form.setValue({address: value});
+    this.onSubmit(this.form);
   }
 
 }
