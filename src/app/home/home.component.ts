@@ -26,8 +26,6 @@ export class HomeComponent implements OnInit {
     this.mapService.getCoordinates(form.value.address).subscribe(([google, openStreet]) => {
       this.googleMapsResult = google;
       this.openStreetMapsResult = openStreet;
-      console.log(google);
-      console.log(openStreet);
     });
   }
 
